@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package RGBD;
+
+service RGBDService{
+  rpc RGBDSend (RGBDRequest) returns (RGBDReply) {}
+}
+
+message RGBDRequest{
+}
+
+message RGBDReply{
+  bytes rgb_image = 1;
+  bytes depth_image = 2;
+}
