@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package RGBD;
+package rgbd;
 
 service RGBDService{
   rpc RGBDSend (RGBDRequest) returns (RGBDReply) {}
