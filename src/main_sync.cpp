@@ -28,13 +28,12 @@ class RGBDServiceImpl final : public rgbd::RGBDService::Service {
     int image_size = rgb_img.total() * rgb_img.elemSize();
     char *image_char = new char[image_size];
     std::memcpy(image_char, rgb_img.data, image_size * sizeof(char));
-    delete rgb_img;
-
-    
     std::string data_rgb_str(reinterpret_cast<char const *>(image_char),
                             image_size);
     //reply->mutable_rgb_image().Merge_From;
     reply->set_rgb_image(data_rgb_str);
+    rgb_img.release();    
+
     //reply->set_allocated_rgb_image(&data_rgb_str);
     return Status::OK;
   }

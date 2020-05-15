@@ -44,11 +44,11 @@ include_directories(
     )
 
 set(SOURCE_CODE
-  src/main.cpp
+  src/main_async.cpp
 )
 
 
-foreach(_target main)
+foreach(_target main_async)
   add_executable(${_target} "src/${_target}.cpp"
     ${hw_proto_rgbd_srcs}
     ${hw_grpc_rgbd_srcs}
