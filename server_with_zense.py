@@ -9,7 +9,7 @@ from concurrent import futures
 from zense_pywrapper import PyPicoZenseManager
 import cv2
 import numpy as np
-
+import pdb
 
 class RGBDServiceServicer(rgbd_pb2_grpc.RGBDServiceServicer):
     def __init__(self):
@@ -26,9 +26,9 @@ class RGBDServiceServicer(rgbd_pb2_grpc.RGBDServiceServicer):
                                   depth_image=depth_img_pb)
 
 
-server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
 rgbd_pb2_grpc.add_RGBDServiceServicer_to_server(RGBDServiceServicer(), server)
-server.add_insecure_port('[::]:50051')
+server.add_insecure_port('localhost:50051')
 server.start()
 print('start')
 
